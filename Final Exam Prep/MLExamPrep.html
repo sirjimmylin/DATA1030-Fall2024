@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MLExamPrep.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="machine-learning-exam-preparation">Machine Learning Exam Preparation</h1>
+<h2 id="sample-answers">Sample Answers</h2>
+<h3 id="splitting-explain-how-k-fold-cross-validation-works">(Splitting) Explain how k-fold cross-validation works</h3>
+<p>K-fold cross-validation is a technique used to assess the performance of a machine learning model by dividing the dataset into <em>k</em> equally sized subsets or &quot;folds.&quot; The process involves the following steps:</p>
+<ol>
+<li>Split the dataset into <em>k</em> folds.</li>
+<li>For each fold, use it as a validation set and the remaining <em>k-1</em> folds as the training set.</li>
+<li>Train the model on the training set and evaluate it on the validation set.</li>
+<li>Repeat this process <em>k</em> times, each time with a different fold as the validation set.</li>
+<li>Calculate the average performance across all <em>k</em> trials to get a more robust estimate of the model's performance.</li>
+</ol>
+<p>This method helps in reducing overfitting and provides a better understanding of how the model will generalize to an independent dataset.</p>
+<h3 id="preprocessing-explain-how-you-would-encode-the-race-feature-below-and-what-would-be-the-output-of-the-encoder">(Preprocessing) Explain how you would encode the race feature below and what would be the output of the encoder</h3>
+<p>To encode a categorical feature like &quot;race,&quot; you can use techniques such as one-hot encoding or label encoding:</p>
+<ul>
+<li>
+<p><strong>One-hot encoding:</strong> This method creates binary columns for each category in the feature. For example, if &quot;race&quot; has categories like &quot;White,&quot; &quot;Black,&quot; and &quot;Asian,&quot; one-hot encoding would create three new binary features: <code>race_White</code>, <code>race_Black</code>, and <code>race_Asian</code>. Each row will have a value of 1 in one of these columns and 0 in others.</p>
+</li>
+<li>
+<p><strong>Label encoding:</strong> This method assigns an integer to each category. For example, &quot;White&quot; might be encoded as 0, &quot;Black&quot; as 1, and &quot;Asian&quot; as 2.</p>
+</li>
+</ul>
+<p>The choice between these methods depends on whether there is an ordinal relationship between categories (use label encoding) or not (use one-hot encoding).</p>
+<h3 id="evaluation-metrics-given-the-true-and-predicted-target-variables-below-write-down-the-confusion-matrix-and-calculate-the-following-metrics-accuracy-precision-recall-make-sure-to-label-the-axes-of-the-matrix-and-write-down-the-equations-of-the-metrics-using-the-names-of-the-elements-in-the-confusion-matrix">(Evaluation metrics) Given the true and predicted target variables below, write down the confusion matrix and calculate the following metrics: accuracy, precision, recall. Make sure to label the axes of the matrix and write down the equations of the metrics using the names of the elements in the confusion matrix</h3>
+<p>Assuming binary classification with classes Positive (P) and Negative (N):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Predicted Positive</th>
+<th>Predicted Negative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Actual Positive</strong></td>
+<td>True Positive (TP)</td>
+<td>False Negative (FN)</td>
+</tr>
+<tr>
+<td><strong>Actual Negative</strong></td>
+<td>False Positive (FP)</td>
+<td>True Negative (TN)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Accuracy</strong>: $\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$</li>
+<li><strong>Precision</strong>: $\text{Precision} = \frac{TP}{TP + FP}$</li>
+<li><strong>Recall</strong>: $\text{Recall} = \frac{TP}{TP + FN}$</li>
+</ul>
+<p>These metrics provide insights into different aspects of model performance: accuracy gives overall correctness, precision measures correctness among positive predictions, and recall assesses coverage of actual positives.</p>
+<h3 id="evaluation-metrics-given-the-true-target-variable-of-a-binary-classification-problem-and-the-2d-array-of-predicted-probabilities-write-down-the-steps-of-how-you-calculate-the-roc-curve">(Evaluation metrics) Given the true target variable of a binary classification problem and the 2D array of predicted probabilities, write down the steps of how you calculate the ROC curve</h3>
+<p>To calculate an ROC curve:</p>
+<ol>
+<li>Sort instances by predicted probability scores in descending order.</li>
+<li>Set a threshold starting from 1 down to 0.</li>
+<li>For each threshold:
+<ul>
+<li>Classify instances above threshold as positive; below as negative.</li>
+<li>Calculate True Positive Rate (TPR = Recall) and False Positive Rate (FPR = FP / (FP + TN)).</li>
+</ul>
+</li>
+<li>Plot TPR against FPR at various thresholds to form an ROC curve.</li>
+<li>The area under this curve is known as AUC, which indicates model performance.</li>
+</ol>
+<h3 id="ml-models-what-is-the-mathematical-model-behind-logistic-regression-write-down-the-equation-of-how-predictions-are-calculated-based-on-feature-values">(ML models) What is the mathematical model behind logistic regression? Write down the equation of how predictions are calculated based on feature values</h3>
+<p>Logistic regression uses a logistic function to model binary outcomes:</p>
+<ul>
+<li>The logistic function is defined as:</li>
+</ul>
+<p>$h(x) = \frac{1}{1 + e^{-(\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n)}}$</p>
+<p>Where:</p>
+<ul>
+<li>$h(x)$ is the predicted probability that output is 1.</li>
+<li>$\beta_0, \beta_1, ..., \beta_n$ are parameters learned from data.</li>
+<li>$x_1, x_2, ..., x_n$ are input features.</li>
+</ul>
+<p>Predictions are made by applying this function to input features.</p>
+<h3 id="ml-models-explain-how-gradient-descent-works-write-down-the-equation-of-how-weights-are-updated-and-the-steps-of-the-algorithm">(ML models) Explain how gradient descent works. Write down the equation of how weights are updated and the steps of the algorithm</h3>
+<p>Gradient descent is an optimization algorithm used to minimize a function by iteratively moving towards its steepest descent:</p>
+<p>Steps:</p>
+<ol>
+<li>Initialize weights randomly.</li>
+<li>Calculate gradient of loss function with respect to weights.</li>
+<li>Update weights using:</li>
+</ol>
+<p>$w := w - \alpha \nabla L(w)$</p>
+<p>Where:</p>
+<ul>
+<li>$w$ are weights.</li>
+<li>$\alpha$ is learning rate.</li>
+<li>$\nabla L(w)$ is gradient of loss function.</li>
+</ul>
+<ol start="4">
+<li>Repeat until convergence or maximum iterations reached.</li>
+</ol>
+<p>The goal is to find weights that minimize loss function.</p>
+<h2 id="additional-questions">Additional Questions</h2>
+<h3 id="feature-engineering-why-is-feature-scaling-important-in-machine-learning-models-how-would-you-perform-feature-scaling">(Feature Engineering) Why is feature scaling important in machine learning models? How would you perform feature scaling?</h3>
+<p>Feature scaling ensures that all features contribute equally to distance calculations in algorithms like k-nearest neighbors or gradient descent optimization in models like neural networks:</p>
+<ul>
+<li><strong>Standardization (Z-score normalization):</strong></li>
+</ul>
+<p>$x' = \frac{x - \mu}{\sigma}$</p>
+<p>Where $x'$ is scaled feature, $x$ is original feature, $\mu$ is mean, $\sigma$ is standard deviation.</p>
+<ul>
+<li><strong>Min-Max Scaling:</strong></li>
+</ul>
+<p>$x' = \frac{x - x_{\text{min}}}{x_{\text{max}} - x_{\text{min}}}$</p>
+<p>Scales features to range [0, 1].</p>
+<h3 id="regularization-explain-l1-vs-l2-regularization-in-linear-models">(Regularization) Explain L1 vs L2 regularization in linear models</h3>
+<p>Regularization helps prevent overfitting by adding penalty terms to loss functions:</p>
+<ul>
+<li><strong>L1 Regularization (Lasso):</strong>
+Adds penalty equal to absolute value of coefficients:</li>
+</ul>
+<p>$L = L_{\text{original}} + \lambda \sum |\beta_i|$</p>
+<p>Encourages sparsity; some coefficients become zero.</p>
+<ul>
+<li><strong>L2 Regularization (Ridge):</strong>
+Adds penalty equal to square of coefficients:</li>
+</ul>
+<p>$L = L_{\text{original}} + \lambda \sum (\beta_i)^2$</p>
+<p>Encourages small coefficients but not necessarily zero.</p>
+<p>Both methods add complexity penalties but differ in their effect on model parameters.</p>
+
+</body>
+</html>
